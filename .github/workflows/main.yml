@@ -1,0 +1,23 @@
+name: Deploy V2Ray with FRP
+
+on:
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install V2Ray
+        run: |
+          bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+          wget -O config_vmess_tcp.json https://raw.githubusercontent.com/mmxdxmm/v2ray-config/main/config_vmess_tcp.json
+          cp ./config_vmess_tcp.json /usr/local/etc/v2ray/config.json
+          nohup /usr/local/bin/v2ray run -config /usr/local/etc/v2ray/config.json > ./out.txt 2>&1 &
+
+      - name: Setup FRP Client
+        run: |
+          wget https://chmlfrp.cn/dw/ChmlFrp-0.51.2_240715_linux_amd64.tar.gz -O frp.tar.gz
+          tar -xzvf frp.tar.gz
+          chmod -R 755 ./frp_ChmlFrp-0.51.2_240715_linux_amd64
+          cd frp_ChmlFrp-0.51.2_240715_linux_amd64
+          ./frpc -u ${{ secrets.FRP_USER }} -p 115880
