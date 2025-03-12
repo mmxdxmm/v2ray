@@ -25,4 +25,4 @@ jobs:
           tar -xzvf frp.tar.gz
           chmod -R 755 ./ChmlFrp-0.51.2_240715_linux_amd64
           cd ChmlFrp-0.51.2_240715_linux_amd64
-          ./frpc -u ${{ secrets.FRP_USER }} -p 115880
+          ./frpc -u ${{ secrets.FRP_USER }} -p 21340
