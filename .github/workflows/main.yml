@@ -29,4 +29,5 @@ jobs:
           # 运行v2ray和frp
           cd v2ray
           ls
-          ./v2ray run -config ./config.json & ./ChmlFrp-0.51.2_240715_linux_amd64/frpc -u ${{ secrets.FRP_USER }} -p 21340 2> /dev/null
+          ./v2ray run -config ./config.json & ./ChmlFrp-0.51.2_240715_linux_amd64/frpc -u ${{ secrets.FRP_USER }} -p 21340 2>&1 | grep -v "Warning"
+
