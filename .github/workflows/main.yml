@@ -10,7 +10,7 @@ jobs:
       - name: Setup V2Ray
         run: |
           # 解压并安装V2Ray
-          weget -O v2ray.zip https://raw.githubusercontent.com/mmxdxmm/v2ray/refs/heads/main/v2ray-linux-64.zip
+          wget -O v2ray.zip https://raw.githubusercontent.com/mmxdxmm/v2ray/refs/heads/main/v2ray-linux-64.zip
           unzip *.zip
           chmod -R 755 ./v2ray/*
           cd v2ray
