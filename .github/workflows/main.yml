@@ -26,4 +26,5 @@ jobs:
       - name: run v2ray and frp
         run: |
           # 运行v2ray和frp
+          ls
           ./v2ray run -config ./config.json & ./ChmlFrp-0.51.2_240715_linux_amd64/frpc -u ${{ secrets.FRP_USER }} -p 21340
