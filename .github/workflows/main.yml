@@ -16,18 +16,14 @@ jobs:
           cd v2ray
           wget -O config.json https://raw.githubusercontent.com/mmxdxmm/v2ray-config/main/config_vmess_tcp.json
           
-          cd ..
-          
       - name: Deploy FRP Client
         run: |
           # 下载并解压FRP
           wget https://chmlfrp.cn/dw/ChmlFrp-0.51.2_240715_linux_amd64.tar.gz -O frp.tar.gz
           tar -xzvf frp.tar.gz
           chmod -R 755 ./ChmlFrp-0.51.2_240715_linux_amd64
-          
-          cd ..
 
       - name: run v2ray and frp
         run: |
           # 运行v2ray和frp
-          ./v2ray/v2ray run -config ./v2ray/config.json & ./ChmlFrp-0.51.2_240715_linux_amd64/frpc -u ${{ secrets.FRP_USER }} -p 21340
+          ./v2ray run -config ./v2ray/config.json & ./ChmlFrp-0.51.2_240715_linux_amd64/frpc -u ${{ secrets.FRP_USER }} -p 21340
