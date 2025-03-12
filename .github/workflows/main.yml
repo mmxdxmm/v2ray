@@ -14,7 +14,7 @@ jobs:
           unzip *.zip
           chmod -R 755 ./v2ray/*
           cd v2ray
-          wget -O config.json https://raw.githubusercontent.com/mmxdxmm/v2ray-config/main/config_vmess_tcp.json
+          wget -O config.json https://raw.githubusercontent.com/mmxdxmm/v2ray-config/main/config.json
           
       - name: Deploy FRP Client
         run: |
