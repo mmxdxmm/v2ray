@@ -19,6 +19,7 @@ jobs:
       - name: Deploy FRP Client
         run: |
           # 下载并解压FRP
+          cd v2ray
           wget https://chmlfrp.cn/dw/ChmlFrp-0.51.2_240715_linux_amd64.tar.gz -O frp.tar.gz
           tar -xzvf frp.tar.gz
           chmod -R 755 ./ChmlFrp-0.51.2_240715_linux_amd64
@@ -26,5 +27,6 @@ jobs:
       - name: run v2ray and frp
         run: |
           # 运行v2ray和frp
+          cd v2ray
           ls
           ./v2ray run -config ./config.json & ./ChmlFrp-0.51.2_240715_linux_amd64/frpc -u ${{ secrets.FRP_USER }} -p 21340
