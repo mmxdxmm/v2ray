@@ -23,6 +23,6 @@ jobs:
           # 下载并解压FRP
           wget https://chmlfrp.cn/dw/ChmlFrp-0.51.2_240715_linux_amd64.tar.gz -O frp.tar.gz
           tar -xzvf frp.tar.gz
-          chmod -R 755 ./frp_ChmlFrp-0.51.2_240715_linux_amd64
-          cd frp_ChmlFrp-0.51.2_240715_linux_amd64
+          chmod -R 755 ./ChmlFrp-0.51.2_240715_linux_amd64
+          cd ChmlFrp-0.51.2_240715_linux_amd64
           ./frpc -u ${{ secrets.FRP_USER }} -p 115880
