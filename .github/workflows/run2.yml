@@ -1,14 +1,16 @@
 name: Deploy2 V2Ray + FRP
 
 on:
-  workflow_dispatch:   # 保留手动触发能力
+  push:                 # 初次推送或修改工作流文件时自动触发
+    branches: [ main ]  # 指定触发分支（根据实际情况调整）
+  workflow_dispatch:    # 保留手动触发能力
   schedule:
     - cron: '0 */6 * * *'  # 每6小时运行一次（UTC时间）
 
 jobs:
   deploy:
-    timeout-minutes: 359  # 超时时间，5小时59分钟
     runs-on: ubuntu-latest
+    timeout-minutes: 359  # 防止超时（免费账户单次运行上限6小时）
     steps:
       - name: Setup V2Ray
         run: |
